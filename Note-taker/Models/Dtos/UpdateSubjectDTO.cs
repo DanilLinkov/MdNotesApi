@@ -11,6 +11,5 @@ namespace Note_taker.Models.Dtos
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        //public ICollection<Note> Notes { get; set; }
     }
 }

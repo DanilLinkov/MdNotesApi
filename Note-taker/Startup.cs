@@ -54,6 +54,7 @@ namespace Note_taker
                 options.UseSqlServer(Configuration.GetConnectionString("sqlDataBase"))
             );
             services.AddScoped<ISubjectRepo, SubjectRepo>();
+            services.AddScoped<INoteRepo, NoteRepo>();
             services.AddAutoMapper(typeof(Mappings));
             services.AddControllers();
         }

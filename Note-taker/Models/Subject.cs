@@ -14,9 +14,5 @@ namespace Note_taker.Models
         public string Title { get; set; }
         [Required]
         public string Description { get; set; }
-        //[Required]
-        //public ICollection<Note> Notes { get; set; }
-
-
     }
 }

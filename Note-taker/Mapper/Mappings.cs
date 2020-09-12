@@ -16,6 +16,9 @@ namespace Note_taker.Mapper
             CreateMap<Subject, GetSubjectDTO>().ReverseMap();
             CreateMap<Subject, CreateSubjectDTO>().ReverseMap();
             CreateMap<Subject, UpdateSubjectDTO>().ReverseMap();
+            CreateMap<Note, CreateNoteDTO>().ReverseMap();
+            CreateMap<Note, UpdateNoteDTO>().ReverseMap();
+            CreateMap<Note, NoteDTO>().ReverseMap();
         }
     }
 }

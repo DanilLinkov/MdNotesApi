@@ -15,5 +15,6 @@ namespace Note_taker.Data
         }
 
         public DbSet<Subject> Subjects { get; set; }
+        public DbSet<Note> Notes { get; set; }
     }
 }
