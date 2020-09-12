@@ -61,6 +61,8 @@ C:\Users\danil\Desktop\Note-taker\Note-taker\bin\Debug\netcoreapp3.1\runtimes\un
 C:\Users\danil\Desktop\Note-taker\Note-taker\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\danil\Desktop\Note-taker\Note-taker\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\danil\Desktop\Note-taker\Note-taker\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\danil\Desktop\Note-taker\Note-taker\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\danil\Desktop\Note-taker\Note-taker\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\danil\Desktop\Note-taker\Note-taker\obj\Debug\netcoreapp3.1\Note-taker.csproj.CoreCompileInputs.cache
 C:\Users\danil\Desktop\Note-taker\Note-taker\obj\Debug\netcoreapp3.1\Note-taker.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\danil\Desktop\Note-taker\Note-taker\obj\Debug\netcoreapp3.1\Note-taker.MvcApplicationPartsAssemblyInfo.cache

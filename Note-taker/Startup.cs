@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -13,6 +14,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Note_taker.Data;
+using Note_taker.Mapper;
+using Note_taker.Repository;
+using Note_taker.Repository.IRepository;
 
 namespace Note_taker
 {
@@ -49,6 +53,8 @@ namespace Note_taker
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("sqlDataBase"))
             );
+            services.AddScoped<ISubjectRepo, SubjectRepo>();
+            services.AddAutoMapper(typeof(Mappings));
             services.AddControllers();
         }
 

@@ -4,19 +4,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Note_taker.Models
+namespace Note_taker.Models.Dtos
 {
-    public class Subject
+    public class UpdateSubjectDTO
     {
-        [Key]
         public int Id { get; set; }
-        [Required]
         public string Title { get; set; }
-        [Required]
         public string Description { get; set; }
-        //[Required]
         //public ICollection<Note> Notes { get; set; }
-
-
     }
 }
