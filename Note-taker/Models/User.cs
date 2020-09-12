@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace Note_taker.Models
 {
-    public class Subject
+    public class User
     {
         [Key]
-        public int Id { get; set; }
+        public int  Id { get; set; }
+        [MinLength(6)]
         [Required]
-        public string Title { get; set; }
+        public string Username { get; set; }
+        [MinLength(6)]
         [Required]
-        public string Description { get; set; }
-        [Required]
-        public int UserId { get; set; }
-        [ForeignKey("UserId")]
-        public User User { get; set; }
+        public string Password { get; set; }
+        [NotMapped]
+        public string Token { get; set; }
     }
 }
