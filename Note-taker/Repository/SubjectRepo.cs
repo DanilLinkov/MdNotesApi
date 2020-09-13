@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Note_taker.Data;
 using Note_taker.Models;
 using Note_taker.Repository.IRepository;
@@ -36,6 +37,11 @@ namespace Note_taker.Repository
         public ICollection<Subject> GetSubjects()
         {
             return _db.Subjects.OrderBy(a => a.Title).ToList();
+        }
+
+        public ICollection<Subject> GetSubjectsInUser(int subjectId)
+        {
+            return _db.Subjects.Include(c => c.User).Where(c => c.UserId == subjectId).ToList();
         }
 
         public bool Save()

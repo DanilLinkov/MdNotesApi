@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Note_taker.Models;
@@ -11,6 +12,7 @@ using Note_taker.Repository.IRepository;
 
 namespace Note_taker.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class SubjectsController : ControllerBase
@@ -49,6 +51,25 @@ namespace Note_taker.Controllers
             var objDto = _mapper.Map<GetSubjectDTO>(obj);
 
             return Ok(objDto);
+        }
+
+        [HttpGet("[action]/{subjectId:int}")]
+        public IActionResult GetSubjectsInUser(int subjectId)
+        {
+            var objList = _sRepo.GetSubjectsInUser(subjectId);
+            if (objList == null)
+            {
+                return NotFound();
+            }
+            var objDto = new List<GetSubjectsDTO>();
+            foreach (var obj in objList)
+            {
+                objDto.Add(_mapper.Map<GetSubjectsDTO>(obj));
+            }
+
+
+            return Ok(objDto);
+
         }
 
         [HttpPost]

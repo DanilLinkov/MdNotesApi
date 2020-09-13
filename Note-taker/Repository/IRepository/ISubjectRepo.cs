@@ -9,6 +9,7 @@ namespace Note_taker.Repository.IRepository
     public interface ISubjectRepo
     {
         ICollection<Subject> GetSubjects();
+        ICollection<Subject> GetSubjectsInUser(int subjectId);
         Subject GetSubject(int subjectId);
         bool SubjectExists(string name);
         bool SubjectExists(int id);

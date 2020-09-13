@@ -66,3 +66,4 @@ C:\Users\danil\Desktop\Note-taker\Note-taker\bin\Debug\netcoreapp3.1\AutoMapper.
 C:\Users\danil\Desktop\Note-taker\Note-taker\obj\Debug\netcoreapp3.1\Note-taker.csproj.CoreCompileInputs.cache
 C:\Users\danil\Desktop\Note-taker\Note-taker\obj\Debug\netcoreapp3.1\Note-taker.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\danil\Desktop\Note-taker\Note-taker\obj\Debug\netcoreapp3.1\Note-taker.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\danil\Desktop\Note-taker\Note-taker\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll

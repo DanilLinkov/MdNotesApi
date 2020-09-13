@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "x9nnGn/8OQp0aqpK9JhHYMRCLP5ZcbTRd3Fswr63fYLdZbylTLOItgxFs5yJhcgKBHfnm0iphreeZCXuof+/TQ==",
+  "dgSpecHash": "kMah65TGrLQAEQPmvsv/XlBAlO7z6XDor5wRMVM+YCObvH3xidJXgnxXDMEUPsS6Trq036K/9Wljbf12/vxDcw==",
   "success": true,
   "projectFilePath": "C:\\Users\\danil\\Desktop\\Note-taker\\Note-taker\\Note-taker.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\danil\\.nuget\\packages\\automapper\\10.0.0\\automapper.10.0.0.nupkg.sha512",
     "C:\\Users\\danil\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.0.1\\automapper.extensions.microsoft.dependencyinjection.8.0.1.nupkg.sha512",
+    "C:\\Users\\danil\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.8\\microsoft.aspnetcore.authentication.jwtbearer.3.1.8.nupkg.sha512",
     "C:\\Users\\danil\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\danil\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "C:\\Users\\danil\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
