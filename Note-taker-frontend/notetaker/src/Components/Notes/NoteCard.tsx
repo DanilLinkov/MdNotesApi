@@ -21,38 +21,17 @@ const useStyles = makeStyles({
   },
 });
 
-const SubjectCard = (props: any) => {
-  const history = useHistory();
+const NoteCard = () => {
   const classes = useStyles();
-  const { title, description, id } = props;
-
-  const onDelete = () => {
-    props.removeCard(id);
-    UserService.deleteSubjectForSubjectId(id).then((response) => {
-      console.log(response.data);
-    });
-  };
-
-  const onEditClick = () => {
-    history.push({
-      pathname: "editsubject",
-      state: 
-      {
-        subjectId:id,
-        title: title,
-        description: description
-    }
-    })
-  }
 
   return (
     <Card className={classes.root}>
       <CardContent>
         <Typography gutterBottom variant="h5" component="h2">
-          {title}
+          title
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
-          {description}
+          this is the description
         </Typography>
       </CardContent>
       <CardActions>
@@ -61,22 +40,15 @@ const SubjectCard = (props: any) => {
           direction="row"
           justify="space-between"
           alignItems="center"
+          spacing={8}
         >
           <Grid item>
             <Button size="small" color="primary" style={{ color: "#e76f51" }}>
-              Go To Notes
+              Go To MarkDown
             </Button>
           </Grid>
           <Grid item>
-            <Button size="small" color="primary" style={{ color: "#e76f51" }} onClick={onEditClick}>
-              edit
-            </Button>
-            <Button
-              size="small"
-              color="primary"
-              style={{ color: "#e76f51" }}
-              onClick={onDelete}
-            >
+            <Button size="small" color="primary" style={{ color: "#e76f51" }}>
               Remove
             </Button>
           </Grid>
@@ -86,4 +58,4 @@ const SubjectCard = (props: any) => {
   );
 };
 
-export default SubjectCard;
+export default NoteCard;

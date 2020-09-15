@@ -76,7 +76,3 @@ const SubjecsContainer = () => {
 };
 
 export default SubjecsContainer;
-
-{/* <Grid item>
-<SubjectCard />
-</Grid> */}
