@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Box, Typography } from "@material-ui/core";
 import { Form, Formik, Field } from "formik";
 import { MyField } from "../MyFrield";
+import AuthService from "../../../Services/Auth.service";
+import { useHistory } from "react-router-dom";
 import logo from "../../../Resources/Logo.svg";
 
 interface Values {
@@ -9,9 +11,35 @@ interface Values {
   Password: string;
 }
 
-const Login = () => {
+const Login = (props:any) => {
+  const history = useHistory();
+
+  const [loginStatus, setLoginStatus] = useState({
+    message: "",
+    loading: false,
+  })
+
+  const onSignUpClick = () => {
+    history.push("/register");
+  }
+
   const onSubmit = (values: Values) => {
-    console.log(values);
+
+    AuthService.login(values.Username,values.Password).then(
+      () => {
+        history.push("/");
+        window.location.reload();
+      },
+      error => {
+        const resMessage = (error.response && error.response.data &&
+          error.reposonse.data.message) || error.message || error.toString();
+
+          setLoginStatus({
+            loading: false,
+            message: resMessage,          
+          });
+      }
+    )
   };
 
   return (
@@ -51,7 +79,7 @@ const Login = () => {
             </div>
             <Button type="submit">login</Button>
             <Typography>━━━━━━━━or━━━━━━━━</Typography>
-            <Button>Sign up</Button>
+            <Button onClick={onSignUpClick}>Sign up</Button>
           </Form>
         )}
       </Formik>

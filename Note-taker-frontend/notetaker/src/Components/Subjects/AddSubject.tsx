@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Box, Typography } from "@material-ui/core";
 import { Form, Formik, Field } from "formik";
 import { MyField } from "../Forms/MyFrield";
+import UserService from "../../Services/User.service";
+import AuthService from "../../Services/Auth.service";
+import { useHistory } from "react-router-dom";
 import logo from "../../../Resources/Logo.svg";
 
 interface Values {
@@ -9,10 +12,35 @@ interface Values {
   Description: string;
 }
 
-const AddSubject = (props:any) => {
+const AddSubject = (props: any) => {
+
+  const [userId, setuserId] = useState(-1);
+  const history = useHistory();
+
+  useEffect(() => {    
+    if (AuthService.getCurrentUser()) {
+      setuserId(AuthService.getCurrentUser().id);
+    } else {
+      history.push("/login");
+    }
+  }, [])  
+
   const onSubmit = (values: Values) => {
-    console.log(values);
+    UserService.postSubjectToUserId(userId, values.Title, values.Description).then(
+      (response) => {
+        // implement later
+        //console.log(response.data);
+        history.push("/");
+      },
+      (error) => {
+        //console.log(error);
+      }
+    );
   };
+
+  const onClickCancel = () => {
+    history.push("/");
+  }
 
   return (
     <Box
@@ -35,12 +63,8 @@ const AddSubject = (props:any) => {
         {({ values }) => (
           <Form style={{ padding: "3em" }}>
             <Typography variant="h4">Create a new subject</Typography>
-            <div style={{marginTop:"1em"}}>
-              <Field
-                name="Title"
-                placeholder="Title"
-                component={MyField}
-              />
+            <div style={{ marginTop: "1em" }}>
+              <Field name="Title" placeholder="Title" component={MyField} />
             </div>
             <div>
               <Field
@@ -50,8 +74,10 @@ const AddSubject = (props:any) => {
                 rows="5"
               />
             </div>
-            <Button style={{marginTop:"1em", marginRight:"2em"}}>Create</Button>
-            <Button style={{marginTop:"1em"}}>Cancel</Button>
+            <Button style={{ marginTop: "1em", marginRight: "2em" }} type="submit">
+              Create
+            </Button>
+            <Button style={{ marginTop: "1em" }} onClick={onClickCancel}>Cancel</Button>
           </Form>
         )}
       </Formik>
