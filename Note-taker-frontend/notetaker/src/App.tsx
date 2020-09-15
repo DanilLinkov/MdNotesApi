@@ -2,14 +2,12 @@ import React from "react";
 import Login from "./Components/Forms/Login/Login";
 import Register from "./Components/Forms/Register/Register";
 import Appbar from "./Components/Appbar/Topbar";
-import SubjectCard from "./Components/Subjects/SubjectCard";
-import SbujectContainer from "./Components/Subjects/SubjectsContainer";
 import AddSubject from "./Components/Subjects/AddSubject";
 import EditSubject from "./Components/Subjects/EditSubject";
 import NotesContainer from "./Components/Notes/NotesContainer";
-
 import { Switch, Route } from "react-router-dom";
 import SubjecsContainer from "./Components/Subjects/SubjectsContainer";
+import NoteEditor from "./Components/NoteEditor/NoteEditor";
 
 function App() {
   return (
@@ -33,6 +31,7 @@ const Home = ({ match }: any) => {
         </Route>
         <Route path="/editsubject" component={EditSubject}/>
         <Route path="/notes" component={NotesContainer}/>
+        <Route path="/editor" component={NoteEditor}/>
         <Route path="/">
           <SubjecsContainer />
         </Route>

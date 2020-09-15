@@ -21,17 +21,21 @@ const useStyles = makeStyles({
   },
 });
 
-const NoteCard = () => {
+const NoteCard = (props: any) => {
   const classes = useStyles();
+
+  const removeCard = () => {
+    props.removeCard(props.id);
+    UserService.deleteNoteForNoteId(props.id).then((response) => {
+      console.log(response);
+    });
+  };
 
   return (
     <Card className={classes.root}>
       <CardContent>
-        <Typography gutterBottom variant="h5" component="h2">
-          title
-        </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
-          this is the description
+        <Typography gutterBottom variant="h4">
+          {props.title}
         </Typography>
       </CardContent>
       <CardActions>
@@ -48,7 +52,12 @@ const NoteCard = () => {
             </Button>
           </Grid>
           <Grid item>
-            <Button size="small" color="primary" style={{ color: "#e76f51" }}>
+            <Button
+              size="small"
+              color="primary"
+              style={{ color: "#e76f51" }}
+              onClick={removeCard}
+            >
               Remove
             </Button>
           </Grid>

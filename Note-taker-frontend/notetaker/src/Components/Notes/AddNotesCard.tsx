@@ -22,17 +22,21 @@ const useStyles = makeStyles({
   },
 });
 
-const AddNotesCard = () => {
+const AddNotesCard = (props:any) => {
   const classes = useStyles();
   const [title, settitle] = useState("title");
 
-  const onChange = (e:any) => {
-      settitle(e.target.value);
-  }
+  const onChange = (e: any) => {
+    settitle(e.target.value);
+  };
 
   const onSubmit = () => {
-      console.log(title);
-  }
+    UserService.createNoteForSubjectId(title, props.subjectId)
+    .then((response) => {
+        props.addNote(response.data.id,title);
+        console.log(response.data);
+    })
+  };
 
   return (
     <Card className={classes.root}>
@@ -45,7 +49,9 @@ const AddNotesCard = () => {
           placeholder="Title"
           onChange={(e) => onChange(e)}
         />
-        <Button style={{ color: "#e76f51" }} onClick={onSubmit}>Add New Note</Button>
+        <Button style={{ color: "#e76f51" }} onClick={onSubmit}>
+          Add New Note
+        </Button>
       </CardContent>
     </Card>
   );

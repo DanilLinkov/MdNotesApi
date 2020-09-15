@@ -45,6 +45,16 @@ const SubjectCard = (props: any) => {
     })
   }
 
+  const onClickGoToNotes = () => {
+    history.push({
+      pathname: "notes",
+      state: 
+      {
+        subjectId:id,
+    }
+    })
+  }
+
   return (
     <Card className={classes.root}>
       <CardContent>
@@ -63,7 +73,7 @@ const SubjectCard = (props: any) => {
           alignItems="center"
         >
           <Grid item>
-            <Button size="small" color="primary" style={{ color: "#e76f51" }}>
+            <Button size="small" color="primary" style={{ color: "#e76f51" }} onClick={onClickGoToNotes}>
               Go To Notes
             </Button>
           </Grid>

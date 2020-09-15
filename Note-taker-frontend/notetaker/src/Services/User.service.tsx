@@ -1,6 +1,7 @@
 import axios from "axios";
 import authHeader from "./Auth-header";
 
+// Gotta change it later for when hosting it
 const API_URL = "https://localhost:44346/api/";
 
 class UserService {
@@ -17,6 +18,24 @@ class UserService {
     return axios.get(API_URL + `Notes/${noteId}`, { headers: authHeader() });
   }
 
+  createNoteForSubjectId(title:any,subjectId:any) {
+    const newNote = {
+      title: title,
+      // Can preset content later which could teach people how to use the notes
+      content: "This is a markdown file",
+      subjectId: subjectId,
+    };
+
+    const head = {
+      headers: authHeader(),
+    };
+
+    return axios.post(API_URL + `Notes`, newNote, head);
+  }
+
+  deleteNoteForNoteId(noteId:any) {
+    return axios.delete(API_URL + `Notes/${noteId}`, { headers: authHeader() });
+  }
   // SUBJECTS
 
   getSubjectsForUser(userId: any) {
