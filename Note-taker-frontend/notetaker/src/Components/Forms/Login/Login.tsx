@@ -4,6 +4,7 @@ import { Form, Formik, Field } from "formik";
 import { MyField } from "../MyFrield";
 import AuthService from "../../../Services/Auth.service";
 import { useHistory } from "react-router-dom";
+import Password from "../Password";
 import logo from "../../../Resources/Logo.svg";
 
 interface Values {
@@ -11,35 +12,42 @@ interface Values {
   Password: string;
 }
 
-const Login = (props:any) => {
+const Login = (props: any) => {
   const history = useHistory();
 
   const [loginStatus, setLoginStatus] = useState({
     message: "",
     loading: false,
-  })
+    hasError: false,
+  });
 
   const onSignUpClick = () => {
     history.push("/register");
-  }
+  };
 
   const onSubmit = (values: Values) => {
-
-    AuthService.login(values.Username,values.Password).then(
-      () => {
-        history.push("/");
-        window.location.reload();
-      },
-      error => {
-        const resMessage = (error.response && error.response.data &&
-          error.reposonse.data.message) || error.message || error.toString();
-
+    if (values.Password && values.Username) {
+      AuthService.login(values.Username, values.Password).then(
+        () => {
+          history.push("/");
+          window.location.reload();
+        },
+        (error) => {
           setLoginStatus({
-            loading: false,
-            message: resMessage,          
+            ...loginStatus,
+            hasError: true,
+            message: "Wrong Username/Password.",
           });
-      }
-    )
+        }
+      );
+    } else {
+      console.log("empty");
+      setLoginStatus({
+        ...loginStatus,
+        hasError: false,
+        message: "",
+      });
+    }
   };
 
   return (
@@ -49,7 +57,7 @@ const Login = (props:any) => {
         margin: "auto",
         marginTop: "10%",
         textAlign: "center",
-        height: "22em",
+        height: "23em",
       }}
       bgcolor="white"
       borderRadius="10px"
@@ -62,21 +70,24 @@ const Login = (props:any) => {
       >
         {({ values }) => (
           <Form style={{ padding: "2.5em" }}>
-              <Typography variant="h4">Note-Taker</Typography>
+            <Typography variant="h4">Note-Taker</Typography>
             <div>
               <Field
                 name="Username"
                 placeholder="Username"
                 component={MyField}
+                error={loginStatus.hasError}
               />
             </div>
             <div>
-              <Field
+              <Field                
                 name="Password"
                 placeholder="Password"
-                component={MyField}
+                component={Password}
+                error={loginStatus.hasError}
               />
             </div>
+            <Typography color="error">{loginStatus.message}</Typography>
             <Button type="submit">login</Button>
             <Typography>━━━━━━━━or━━━━━━━━</Typography>
             <Button onClick={onSignUpClick}>Sign up</Button>
