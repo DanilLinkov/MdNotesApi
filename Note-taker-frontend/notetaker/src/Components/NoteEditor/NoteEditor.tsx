@@ -11,17 +11,22 @@ import AuthService from "../../Services/Auth.service";
 import { useHistory } from "react-router-dom";
 import UserService from "../../Services/User.service";
 import MDReactComponent from "markdown-react-js";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const NoteEditor = (props: any) => {
   const history = useHistory();
   const [title, setTitle] = useState("");
   const [markdown, setMarkdown] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [saving, setSaving] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     UserService.getNoteForNoteId(props.location.state.noteId).then(
       (response) => {
         setTitle(response.data.title);
         setMarkdown(response.data.content);
+        setLoading(false);
       }
     );
   }, []);
@@ -47,6 +52,7 @@ const NoteEditor = (props: any) => {
   };
 
   const onSaveClicked = () => {
+    setSaving(true);
     UserService.editNoteForNoteId(
       props.location.state.noteId,
       title,
@@ -54,17 +60,20 @@ const NoteEditor = (props: any) => {
       props.location.state.subjectId
     ).then((response) => {
       console.log(response.data);
+      setSaving(false);
     });
   };
 
   const onTitleChange = (e: any) => {
-      setTitle(e.target.value);
-  }
+    setTitle(e.target.value);
+  };
+
+  console.log(markdown);
 
   return (
     <Box
       style={{ width: "90%", margin: "auto", padding: "2em", marginTop: "5%" }}
-      bgcolor="#AFDBF5"
+      bgcolor="white"
       borderRadius="20px"
     >
       <Grid
@@ -74,18 +83,9 @@ const NoteEditor = (props: any) => {
         alignItems="center"
         spacing={2}
       >
-        <Grid container item direction="row" justify="center">
-          <Grid item>
-            <Button onClick={onSaveClicked}>Save</Button>
-          </Grid>
-          <Grid>
-            <Button onClick={onClickedBack}>Back</Button>
-          </Grid>
-        </Grid>
         <Grid item xs={12}>
           <TextField
             multiline
-            style={{ width: "100%" }}
             variant="outlined"
             autoComplete="off"
             placeholder="title"
@@ -93,22 +93,53 @@ const NoteEditor = (props: any) => {
             onChange={(e) => onTitleChange(e)}
           />
         </Grid>
-        <Grid item container spacing={4}>
-          <Grid item sm={6} xs={12}>
-            <TextareaAutosize
-              style={{ width: "100%" }}
-              rowsMin={45}
-              defaultValue={markdown}
-              onChange={(e) => onChange(e)}
-              onKeyDown={(e) => onTabPress(e)}
-            />
+        {saving ? (
+          <Grid item>
+            {" "}
+            <CircularProgress />{" "}
           </Grid>
-          <Grid item sm={6} xs={12}>
-            <Box bgcolor="#DCDCDC" width="100%" height="97.5%" padding="4px">
-              <MDReactComponent text={markdown} />
-            </Box>
+        ) : (
+          <Grid container item direction="row" justify="center">
+            <Grid item>
+              <Button onClick={onSaveClicked} style={{ color: "#e76f51" }}>
+                Save
+              </Button>
+            </Grid>
+            <Grid>
+              <Button onClick={onClickedBack} style={{ color: "#e76f51" }}>
+                Back
+              </Button>
+            </Grid>
           </Grid>
-        </Grid>
+        )}
+        {loading ? (
+          <CircularProgress />
+        ) : (
+          <Grid item container spacing={4}>
+            <Grid item sm={6} xs={12}>
+              <TextareaAutosize
+                style={{ width: "100%" }}
+                rowsMin={45}
+                defaultValue={markdown}
+                onChange={(e) => onChange(e)}
+                onKeyDown={(e) => onTabPress(e)}
+              />
+            </Grid>
+            <Grid item sm={6} xs={12}>
+              <Box
+                bgcolor="#DCDCDC"
+                width="97.6%"
+                height="99.3%"
+                paddingLeft="10px"
+                paddingRight="10px"
+                border={1}
+                style={{ wordBreak: "break-all" }}
+              >
+                <MDReactComponent text={markdown} />
+              </Box>
+            </Grid>
+          </Grid>
+        )}
       </Grid>
     </Box>
   );

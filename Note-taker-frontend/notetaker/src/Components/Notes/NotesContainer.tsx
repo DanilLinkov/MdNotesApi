@@ -5,10 +5,12 @@ import { useHistory } from "react-router-dom";
 import UserService from "../../Services/User.service";
 import NoteCard from "./NoteCard";
 import AddNotesCard from "./AddNotesCard";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const NotesContainer = (props: any) => {
   const history = useHistory();
   const [notes, setNotes] = useState<any>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (AuthService.getCurrentUser()) {
@@ -17,6 +19,7 @@ const NotesContainer = (props: any) => {
           setNotes(response.data);
           console.log(props.location.state.subjectId);
           console.log(response.data);
+          setLoading(false);
         }
       );
     } else {
@@ -30,22 +33,22 @@ const NotesContainer = (props: any) => {
       title: title,
     };
 
-    setNotes((oldNotes:any) => [...oldNotes, newNoteCard]);
+    setNotes((oldNotes: any) => [...oldNotes, newNoteCard]);
   };
 
   const removeCardWithId = (cardId: any) => {
-      const newArray = notes.filter((note:any) => {
-          if(note.id==cardId){
-              return false;
-          }
-          return true;
-      })
-      setNotes(newArray);
-  }
+    const newArray = notes.filter((note: any) => {
+      if (note.id == cardId) {
+        return false;
+      }
+      return true;
+    });
+    setNotes(newArray);
+  };
 
   const backToHome = () => {
-      history.push("/");
-  }
+    history.push("/");
+  };
 
   // REMEMBER TO CHANGE SUBJECTID FROM PROP TO OBJECT WAY
 
@@ -58,10 +61,15 @@ const NotesContainer = (props: any) => {
         marginTop: "5%",
         textAlign: "center",
       }}
-      bgcolor="#AFDBF5"
+      bgcolor="white"
       borderRadius="20px"
     >
-      <Button style={{ marginBottom: "5px", color: "#e76f51" }} onClick={backToHome}>Back</Button>
+      <Button
+        style={{ marginBottom: "5px", color: "#e76f51" }}
+        onClick={backToHome}
+      >
+        Back
+      </Button>
       <Grid
         container
         direction="row"
@@ -69,14 +77,26 @@ const NotesContainer = (props: any) => {
         alignItems="center"
         spacing={2}
       >
-        <Grid item xs={4}>
-          <AddNotesCard subjectId={props.location.state.subjectId} addNote={addNoteCardWithId}/>
+        <Grid item xs={12}>
+          <AddNotesCard
+            subjectId={props.location.state.subjectId}
+            addNote={addNoteCardWithId}
+          />
         </Grid>
-        {Object.keys(notes).map((id) => (
-          <Grid item xs={4} key={id}>
-            <NoteCard title={(notes as any)[id].title} id={(notes as any)[id].id} removeCard={removeCardWithId} subjectId={props.location.state.subjectId}/>
-          </Grid>
-        ))}
+        {loading ? (
+          <CircularProgress style={{marginTop:"5%"}} />
+        ) : (
+          Object.keys(notes).map((id) => (
+            <Grid item xs={12} sm={4} key={id}>
+              <NoteCard
+                title={(notes as any)[id].title}
+                id={(notes as any)[id].id}
+                removeCard={removeCardWithId}
+                subjectId={props.location.state.subjectId}
+              />
+            </Grid>
+          ))
+        )}
       </Grid>
     </Box>
   );

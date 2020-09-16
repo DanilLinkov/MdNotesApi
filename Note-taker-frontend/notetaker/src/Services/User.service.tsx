@@ -22,7 +22,7 @@ class UserService {
     const newNote = {
       title: title,
       // Can preset content later which could teach people how to use the notes
-      content: "This is a markdown file",
+      content: "# This is a markdown file\n ### To learn more about markdown syntax go to https://www.markdownguide.org/basic-syntax/",
       subjectId: subjectId,
     };
 
@@ -96,19 +96,3 @@ class UserService {
 }
 
 export default new UserService();
-
-// getPublicContent() {
-//     return axios.get(API_URL + 'all');
-//   }
-
-//   getUserBoard() {
-//     return axios.get(API_URL + 'user', { headers: authHeader() });
-//   }
-
-//   getModeratorBoard() {
-//     return axios.get(API_URL + 'mod', { headers: authHeader() });
-//   }
-
-//   getAdminBoard() {
-//     return axios.get(API_URL + 'admin', { headers: authHeader() });
-//   }

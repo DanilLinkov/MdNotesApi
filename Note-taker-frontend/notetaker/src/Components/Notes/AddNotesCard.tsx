@@ -12,30 +12,46 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import UserService from "../../Services/User.service";
 import { useHistory } from "react-router-dom";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const useStyles = makeStyles({
   root: {
     width: "100%",
+    backgroundColor: "#FFDEE9",
   },
   media: {
     height: 140,
   },
 });
 
-const AddNotesCard = (props:any) => {
+const AddNotesCard = (props: any) => {
   const classes = useStyles();
-  const [title, settitle] = useState("title");
+  const [title, settitle] = useState("Title");
+  const [loading, setLoading] = useState(false);
 
   const onChange = (e: any) => {
     settitle(e.target.value);
   };
 
   const onSubmit = () => {
-    UserService.createNoteForSubjectId(title, props.subjectId)
-    .then((response) => {
-        props.addNote(response.data.id,title);
-        console.log(response.data);
-    })
+    setLoading(true);
+    if (title.length < 1) {
+      UserService.createNoteForSubjectId("Title", props.subjectId).then(
+        (response) => {
+          props.addNote(response.data.id, "Title");
+          console.log(response.data);
+          setLoading(false);
+        }
+      );
+    } else {
+      UserService.createNoteForSubjectId(title, props.subjectId).then(
+        (response) => {
+          props.addNote(response.data.id, title);
+          console.log(response.data);
+          setLoading(false);
+        }
+      );
+    }
   };
 
   return (
@@ -49,10 +65,16 @@ const AddNotesCard = (props:any) => {
           placeholder="Title"
           onChange={(e) => onChange(e)}
         />
-        <Button style={{ color: "#e76f51" }} onClick={onSubmit}>
-          Add New Note
-        </Button>
       </CardContent>
+      <CardActionArea>
+        {loading ? (
+          <CircularProgress />
+        ) : (
+          <Button style={{ color: "#e76f51" }} onClick={onSubmit}>
+            Add New Note
+          </Button>
+        )}
+      </CardActionArea>
     </Card>
   );
 };

@@ -15,6 +15,8 @@ import { useHistory } from "react-router-dom";
 const useStyles = makeStyles({
   root: {
     width: "100%",
+    backgroundColor: "#2AF598",
+    color: "white",
   },
   media: {
     height: 140,
@@ -36,32 +38,30 @@ const SubjectCard = (props: any) => {
   const onEditClick = () => {
     history.push({
       pathname: "editsubject",
-      state: 
-      {
-        subjectId:id,
+      state: {
+        subjectId: id,
         title: title,
-        description: description
-    }
-    })
-  }
+        description: description,
+      },
+    });
+  };
 
   const onClickGoToNotes = () => {
     history.push({
       pathname: "notes",
-      state: 
-      {
-        subjectId:id,
-    }
-    })
-  }
+      state: {
+        subjectId: id,
+      },
+    });
+  };
 
   return (
     <Card className={classes.root}>
       <CardContent>
-        <Typography gutterBottom variant="h5" component="h2">
+        <Typography variant="h4">
           {title}
         </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
+        <Typography variant="h5" color="textSecondary">
           {description}
         </Typography>
       </CardContent>
@@ -73,16 +73,26 @@ const SubjectCard = (props: any) => {
           alignItems="center"
         >
           <Grid item>
-            <Button size="small" color="primary" style={{ color: "#e76f51" }} onClick={onClickGoToNotes}>
+            <Button
+              size="large"
+              color="primary"
+              style={{ color: "#e76f51" }}
+              onClick={onClickGoToNotes}
+            >
               Go To Notes
             </Button>
           </Grid>
           <Grid item>
-            <Button size="small" color="primary" style={{ color: "#e76f51" }} onClick={onEditClick}>
+            <Button
+              size="large"
+              color="primary"
+              style={{ color: "#e76f51", marginRight: "20px" }}
+              onClick={onEditClick}
+            >
               edit
             </Button>
             <Button
-              size="small"
+              size="large"
               color="primary"
               style={{ color: "#e76f51" }}
               onClick={onDelete}

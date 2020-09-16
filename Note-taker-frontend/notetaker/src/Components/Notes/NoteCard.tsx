@@ -15,6 +15,8 @@ import { useHistory } from "react-router-dom";
 const useStyles = makeStyles({
   root: {
     width: "100%",
+    backgroundColor: "#2AF598",
+    color: "white"
   },
   media: {
     height: 140,
@@ -45,7 +47,7 @@ const NoteCard = (props: any) => {
   return (
     <Card className={classes.root}>
       <CardContent>
-        <Typography gutterBottom variant="h4">
+        <Typography variant="h4">
           {props.title}
         </Typography>
       </CardContent>

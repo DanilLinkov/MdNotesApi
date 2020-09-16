@@ -6,6 +6,7 @@ import AuthService from "../../../Services/Auth.service";
 import { useHistory } from "react-router-dom";
 import logo from "../../../Resources/Logo.svg";
 import Password from "../Password";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 interface Values {
   Username: string;
@@ -22,12 +23,14 @@ const Register = () => {
   const [userError, setUserError] = useState("");
   const [userPassError, setPassError] = useState("");
   const [userOverAllError, setOverAllError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const onBackToLogin = () => {
     history.push("/login");
   };
 
   const onSubmit = (values: Values) => {
+    setLoading(true);
     if (values.Password && values.Username && values.ReEnteredPassword) {
       var temp = true;
 
@@ -36,6 +39,7 @@ const Register = () => {
         checkCorrectLength(values.Password)
       ) {
         temp = false;
+        setLoading(false);
         setUserError("Username must be at least 6 characters in length.");
         setPassError("");
       }
@@ -45,6 +49,7 @@ const Register = () => {
         checkCorrectLength(values.Username)
       ) {
         temp = false;
+        setLoading(false);
         setUserError("");
         setPassError("Password must be at least 6 characters in length.");
       }
@@ -54,6 +59,7 @@ const Register = () => {
         !checkCorrectLength(values.Username)
       ) {
         temp = false;
+        setLoading(false);
         setUserError("Username must be at least 6 characters in length.");
         setPassError("Password must be at least 6 characters in length.");
       }
@@ -68,6 +74,7 @@ const Register = () => {
 
       if (!checkPassEqual(values.Password, values.ReEnteredPassword)) {
         temp = false;
+        setLoading(false);
         setOverAllError("Password and Re-entered password are not equal.");
       }
 
@@ -86,6 +93,7 @@ const Register = () => {
           },
           (error) => {
             setUserError("Username already exists.");
+            setLoading(false);
           }
         );
       }
@@ -93,6 +101,7 @@ const Register = () => {
       setUserError("");
       setPassError("");
       setOverAllError("");
+      setLoading(false);
     }
   };
 
@@ -132,7 +141,23 @@ const Register = () => {
       >
         {({ values }) => (
           <Form style={{ padding: "2.5em" }}>
-            <Typography variant="h4">Note-Taker</Typography>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+                padding: "2px",
+              }}
+            >
+              <img
+                src={logo}
+                height="80px"
+                alt="Logo"
+                style={{ marginRight: "10px" }}
+              />
+              <Typography variant="h4">MD-Notes</Typography>
+            </div>
             <div>
               <Field
                 name="Username"
@@ -160,9 +185,15 @@ const Register = () => {
                 helperText={userOverAllError}
               />
             </div>
-            <Button type="submit">Sign up</Button>
-            <Typography>━━━━━━━━or━━━━━━━━</Typography>
-            <Button onClick={onBackToLogin}>back to login</Button>
+            {loading ? (
+              <CircularProgress style={{marginTop:"15px"}}/>
+            ) : (
+              <div>
+                <Button type="submit">Sign up</Button>
+                <Typography>━━━━━━━━or━━━━━━━━</Typography>
+                <Button onClick={onBackToLogin}>back to login</Button>
+              </div>
+            )}
           </Form>
         )}
       </Formik>

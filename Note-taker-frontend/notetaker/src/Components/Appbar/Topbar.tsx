@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { AppBar, Toolbar, Typography, Grid, Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import AuthService from "../../Services/Auth.service";
+import logo from "../../Resources/Logo.svg";
 
 const Topbar = (props: any) => {
   const [user, setUser] = useState({
@@ -35,7 +36,15 @@ const Topbar = (props: any) => {
           alignItems="center"
         >
           <Grid item>
-            <Typography variant="h5">Note-Taker</Typography>
+            <div style={{display:"flex",flexDirection:"row", justifyContent:"center",alignItems:"center", padding:"15px"}}>
+              <img
+                src={logo}
+                height="33px"
+                alt="Logo"
+                style={{ marginRight: "10px" }}
+              />
+              <Typography variant="h5">MD-Notes</Typography>
+            </div>
           </Grid>
           <div>
             <Grid
@@ -47,7 +56,7 @@ const Topbar = (props: any) => {
               alignItems="center"
             >
               <Grid item>
-                <Typography variant="h6">{user.username}</Typography>
+                <Typography variant="button">{user.username}</Typography>
               </Grid>
               <Grid item>
                 <Button color="inherit" onClick={onHomeClick}>

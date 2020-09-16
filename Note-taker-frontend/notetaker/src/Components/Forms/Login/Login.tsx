@@ -6,6 +6,7 @@ import AuthService from "../../../Services/Auth.service";
 import { useHistory } from "react-router-dom";
 import Password from "../Password";
 import logo from "../../../Resources/Logo.svg";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 interface Values {
   Username: string;
@@ -14,6 +15,7 @@ interface Values {
 
 const Login = (props: any) => {
   const history = useHistory();
+  const [loading, setLoading] = useState(false);
 
   const [loginStatus, setLoginStatus] = useState({
     message: "",
@@ -26,9 +28,11 @@ const Login = (props: any) => {
   };
 
   const onSubmit = (values: Values) => {
+    setLoading(true);
     if (values.Password && values.Username) {
       AuthService.login(values.Username, values.Password).then(
         () => {
+          setLoading(false);
           history.push("/");
           window.location.reload();
         },
@@ -38,6 +42,7 @@ const Login = (props: any) => {
             hasError: true,
             message: "Wrong Username/Password.",
           });
+          setLoading(false);
         }
       );
     } else {
@@ -47,17 +52,18 @@ const Login = (props: any) => {
         hasError: false,
         message: "",
       });
+      setLoading(false);
     }
   };
 
   return (
     <Box
       style={{
-        width: "30em",
+        width: "35em",
         margin: "auto",
         marginTop: "10%",
         textAlign: "center",
-        height: "23em",
+        height: "30em",
       }}
       bgcolor="white"
       borderRadius="10px"
@@ -70,7 +76,23 @@ const Login = (props: any) => {
       >
         {({ values }) => (
           <Form style={{ padding: "2.5em" }}>
-            <Typography variant="h4">Note-Taker</Typography>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+                padding: "2px",
+              }}
+            >
+              <img
+                src={logo}
+                height="80px"
+                alt="Logo"
+                style={{ marginRight: "10px" }}
+              />
+              <Typography variant="h4">MD-Notes</Typography>
+            </div>
             <div>
               <Field
                 name="Username"
@@ -80,17 +102,23 @@ const Login = (props: any) => {
               />
             </div>
             <div>
-              <Field                
+              <Field
                 name="Password"
                 placeholder="Password"
                 component={Password}
                 error={loginStatus.hasError}
               />
             </div>
-            <Typography color="error">{loginStatus.message}</Typography>
-            <Button type="submit">login</Button>
-            <Typography>━━━━━━━━or━━━━━━━━</Typography>
-            <Button onClick={onSignUpClick}>Sign up</Button>
+            {loading ? (
+              <CircularProgress />
+            ) : (
+              <div>
+                <Typography color="error">{loginStatus.message}</Typography>
+                <Button type="submit">login</Button>
+                <Typography>━━━━━━━━or━━━━━━━━</Typography>
+                <Button onClick={onSignUpClick}>Sign up</Button>
+              </div>
+            )}
           </Form>
         )}
       </Formik>
