@@ -36,6 +36,22 @@ class UserService {
   deleteNoteForNoteId(noteId:any) {
     return axios.delete(API_URL + `Notes/${noteId}`, { headers: authHeader() });
   }
+
+  editNoteForNoteId(noteId: any, title: any, content: any, subjectId: any) {
+    const patchNote = {
+      id: noteId,
+      title: title,
+      content: content,
+      subjectId: subjectId
+    };
+
+    const head = {
+      headers: authHeader(),
+    };
+
+    return axios.patch(API_URL + `Notes/${noteId}`, patchNote, head);
+  }
+
   // SUBJECTS
 
   getSubjectsForUser(userId: any) {
@@ -69,8 +85,6 @@ class UserService {
         description: description,
         userId: userId
       };
-
-      console.log(patchSubject);
   
       const head = {
         headers: authHeader(),

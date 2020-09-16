@@ -22,12 +22,23 @@ const useStyles = makeStyles({
 });
 
 const NoteCard = (props: any) => {
+  const history = useHistory();
   const classes = useStyles();
 
   const removeCard = () => {
     props.removeCard(props.id);
     UserService.deleteNoteForNoteId(props.id).then((response) => {
       console.log(response);
+    });
+  };
+
+  const goToMarkdownClicked = () => {
+    history.push({
+      pathname: "editor",
+      state: {
+        noteId: props.id,
+        subjectId: props.subjectId,
+      },
     });
   };
 
@@ -47,7 +58,7 @@ const NoteCard = (props: any) => {
           spacing={8}
         >
           <Grid item>
-            <Button size="small" color="primary" style={{ color: "#e76f51" }}>
+            <Button size="small" color="primary" style={{ color: "#e76f51" }} onClick={goToMarkdownClicked}>
               Go To MarkDown
             </Button>
           </Grid>

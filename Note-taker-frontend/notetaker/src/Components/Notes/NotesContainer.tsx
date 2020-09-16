@@ -74,7 +74,7 @@ const NotesContainer = (props: any) => {
         </Grid>
         {Object.keys(notes).map((id) => (
           <Grid item xs={4} key={id}>
-            <NoteCard title={(notes as any)[id].title} id={(notes as any)[id].id} removeCard={removeCardWithId}/>
+            <NoteCard title={(notes as any)[id].title} id={(notes as any)[id].id} removeCard={removeCardWithId} subjectId={props.location.state.subjectId}/>
           </Grid>
         ))}
       </Grid>
