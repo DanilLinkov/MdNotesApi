@@ -2,7 +2,7 @@ import axios from "axios";
 import authHeader from "./Auth-header";
 
 // Gotta change it later for when hosting it
-const API_URL = "https://localhost:44346/api/";
+const API_URL = "https://mdnotesapi.azurewebsites.net/api/";
 
 class UserService {
 

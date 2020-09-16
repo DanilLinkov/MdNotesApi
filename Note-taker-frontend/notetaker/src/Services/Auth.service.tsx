@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://localhost:44346/api/Users/";
+const API_URL = "https://mdnotesapi.azurewebsites.net/api/Users/";
 
 class AuthService {
   login(username: any, password: any) {

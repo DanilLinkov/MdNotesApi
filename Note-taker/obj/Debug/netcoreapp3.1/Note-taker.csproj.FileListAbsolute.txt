@@ -67,3 +67,4 @@ C:\Users\danil\Desktop\Note-taker\Note-taker\obj\Debug\netcoreapp3.1\Note-taker.
 C:\Users\danil\Desktop\Note-taker\Note-taker\obj\Debug\netcoreapp3.1\Note-taker.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\danil\Desktop\Note-taker\Note-taker\obj\Debug\netcoreapp3.1\Note-taker.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\danil\Desktop\Note-taker\Note-taker\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\danil\Desktop\Note-taker\Note-taker\bin\Debug\netcoreapp3.1\Properties\ServiceDependencies\MDNotesAPI - Web Deploy\profile.arm.json

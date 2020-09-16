@@ -83,9 +83,11 @@ namespace Note_taker
                     builder =>
                     {
                         builder.WithOrigins("http://localhost:3000",
-                                            "replaceThisByYourHostedUrl.com")
+                                            "https://mdnotes.azurewebsites.net",
+                                            "mdnotes.azurewebsites.net/")
                                             .AllowAnyHeader()
-                                            .AllowAnyMethod();
+                                            .AllowAnyMethod()
+                                            .AllowAnyOrigin();
                     });
             });
             services.AddDbContext<ApplicationDbContext>(options =>

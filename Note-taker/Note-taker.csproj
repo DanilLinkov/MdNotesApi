@@ -1,8 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Note_taker</RootNamespace>
+    <UserSecretsId>57811c2e-c39f-4bf3-8330-0f2534e2fc38</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
