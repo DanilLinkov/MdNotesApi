@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Box, Typography, Grid } from "@material-ui/core";
+import { Button, Box, Grid } from "@material-ui/core";
 import AuthService from "../../Services/Auth.service";
 import { useHistory } from "react-router-dom";
 import UserService from "../../Services/User.service";
@@ -17,15 +17,13 @@ const NotesContainer = (props: any) => {
       UserService.getNotesForSubjectId(props.location.state.subjectId).then(
         (response) => {
           setNotes(response.data);
-          console.log(props.location.state.subjectId);
-          console.log(response.data);
           setLoading(false);
         }
       );
     } else {
       history.push("/");
     }
-  }, []);
+  }, [history, props.location.state]);
 
   const addNoteCardWithId = (cardId: any, title: any) => {
     const newNoteCard = {
@@ -38,7 +36,7 @@ const NotesContainer = (props: any) => {
 
   const removeCardWithId = (cardId: any) => {
     const newArray = notes.filter((note: any) => {
-      if (note.id == cardId) {
+      if (note.id === cardId) {
         return false;
       }
       return true;

@@ -16,10 +16,6 @@ interface Values {
 
 const Register = () => {
   const history = useHistory();
-  const [registerStatus, setRegisterStatus] = useState({
-    successful: false,
-    message: "",
-  });
   const [userError, setUserError] = useState("");
   const [userPassError, setPassError] = useState("");
   const [userOverAllError, setOverAllError] = useState("");
@@ -85,10 +81,6 @@ const Register = () => {
       if (temp) {
         AuthService.register(values.Username, values.Password).then(
           (response) => {
-            setRegisterStatus({
-              message: response.data.message,
-              successful: true,
-            });
             history.push("/login");
           },
           (error) => {

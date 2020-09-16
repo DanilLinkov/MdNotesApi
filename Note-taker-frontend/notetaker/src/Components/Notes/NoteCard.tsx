@@ -1,7 +1,6 @@
 import React from "react";
 import {
   Card,
-  CardActionArea,
   CardActions,
   CardContent,
   Button,
@@ -30,7 +29,7 @@ const NoteCard = (props: any) => {
   const removeCard = () => {
     props.removeCard(props.id);
     UserService.deleteNoteForNoteId(props.id).then((response) => {
-      console.log(response);
+      // Implement something later?
     });
   };
 

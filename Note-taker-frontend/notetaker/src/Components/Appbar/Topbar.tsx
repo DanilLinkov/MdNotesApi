@@ -19,7 +19,7 @@ const Topbar = (props: any) => {
     } else {
       history.push("/login");
     }
-  }, []);
+  }, [history]);
 
   const onLogout = () => {
     AuthService.logout();

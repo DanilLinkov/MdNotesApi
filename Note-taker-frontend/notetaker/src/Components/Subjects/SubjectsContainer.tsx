@@ -9,12 +9,6 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 const SubjecsContainer = () => {
   const history = useHistory();
   const [subjects, setSubjects] = useState([]);
-  const [user, setUser] = useState({
-    id: -1,
-    password: "",
-    token: "",
-    username: "",
-  });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -32,9 +26,7 @@ const SubjecsContainer = () => {
     } else {
       history.push("/login");
     }
-
-    setUser(AuthService.getCurrentUser());
-  }, []);
+  }, [history]);
 
   const clickedAddNewSubject = () => {
     history.push("/addsubject");
@@ -42,7 +34,7 @@ const SubjecsContainer = () => {
 
   const removeCardWithId = (subjectId: any) => {
     const newArray = subjects.filter((subject: any) => {
-      if (subject.id == subjectId) {
+      if (subject.id === subjectId) {
         return false;
       }
       return true;

@@ -23,7 +23,7 @@ const AddSubject = (props: any) => {
     } else {
       history.push("/login");
     }
-  }, []);
+  }, [history]);
 
   const onSubmit = (values: Values) => {
     setLoading(true);
@@ -50,12 +50,9 @@ const AddSubject = (props: any) => {
       values.Description
     ).then(
       (response) => {
-        // implement later
-        //console.log(response.data);
         history.push("/");
       },
       (error) => {
-        //console.log(error);
       }
     );
   };

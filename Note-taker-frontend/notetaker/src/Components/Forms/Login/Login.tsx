@@ -46,7 +46,6 @@ const Login = (props: any) => {
         }
       );
     } else {
-      console.log("empty");
       setLoginStatus({
         ...loginStatus,
         hasError: false,

@@ -1,7 +1,6 @@
 import React from "react";
 import {
   Card,
-  CardActionArea,
   CardActions,
   CardContent,
   Button,
@@ -31,7 +30,6 @@ const SubjectCard = (props: any) => {
   const onDelete = () => {
     props.removeCard(id);
     UserService.deleteSubjectForSubjectId(id).then((response) => {
-      console.log(response.data);
     });
   };
 

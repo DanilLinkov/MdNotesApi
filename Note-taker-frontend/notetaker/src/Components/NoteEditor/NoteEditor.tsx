@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import {
   Button,
   Box,
-  Typography,
   Grid,
   TextareaAutosize,
   TextField,
@@ -34,14 +33,14 @@ const NoteEditor = (props: any) => {
     else {
       history.push("/");
     }
-  }, []);
+  }, [history,props.location.state]);
 
   const onChange = (e: any) => {
     setMarkdown(e.target.value);
   };
 
   const onTabPress = (e: any) => {
-    if (e.keyCode == 9) {
+    if (e.keyCode === 9) {
       e.preventDefault();
       e.target.value += "\t";
     }
@@ -64,7 +63,6 @@ const NoteEditor = (props: any) => {
       markdown,
       props.location.state.subjectId
     ).then((response) => {
-      console.log(response.data);
       setSaving(false);
     });
   };

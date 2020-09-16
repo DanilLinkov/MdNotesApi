@@ -1,17 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Card,
-  CardActionArea,
-  CardActions,
   CardContent,
   Button,
-  Typography,
-  Grid,
   TextField,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import UserService from "../../Services/User.service";
-import { useHistory } from "react-router-dom";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 const useStyles = makeStyles({

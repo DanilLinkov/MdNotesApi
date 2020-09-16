@@ -23,7 +23,7 @@ const EditSubject = (props: any) => {
     } else {
       history.push("/login");
     }
-  }, []);
+  }, [history]);
 
   const onSubmit = (values: Values) => {
     setLoading(true);
@@ -48,7 +48,6 @@ const EditSubject = (props: any) => {
       values.Description,
       userId
     ).then((response) => {
-      console.log(response);
       history.push("/");
     });
   };
@@ -57,8 +56,6 @@ const EditSubject = (props: any) => {
     history.push("/");
     return 1;
   };
-
-  console.log(props);
 
   return (
     <div>
