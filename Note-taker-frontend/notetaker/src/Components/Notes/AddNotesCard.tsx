@@ -39,7 +39,6 @@ const AddNotesCard = (props: any) => {
       UserService.createNoteForSubjectId("Title", props.subjectId).then(
         (response) => {
           props.addNote(response.data.id, "Title");
-          console.log(response.data);
           setLoading(false);
         }
       );
@@ -47,7 +46,6 @@ const AddNotesCard = (props: any) => {
       UserService.createNoteForSubjectId(title, props.subjectId).then(
         (response) => {
           props.addNote(response.data.id, title);
-          console.log(response.data);
           setLoading(false);
         }
       );
@@ -66,15 +64,13 @@ const AddNotesCard = (props: any) => {
           onChange={(e) => onChange(e)}
         />
       </CardContent>
-      <CardActionArea>
-        {loading ? (
-          <CircularProgress />
-        ) : (
-          <Button style={{ color: "#e76f51" }} onClick={onSubmit}>
-            Add New Note
-          </Button>
-        )}
-      </CardActionArea>
+      {loading ? (
+        <CircularProgress />
+      ) : (
+        <Button style={{ color: "#e76f51" }} onClick={onSubmit}>
+          Add New Note
+        </Button>
+      )}
     </Card>
   );
 };

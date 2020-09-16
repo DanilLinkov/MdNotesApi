@@ -27,6 +27,23 @@ const AddSubject = (props: any) => {
 
   const onSubmit = (values: Values) => {
     setLoading(true);
+
+    if(values.Title.length<1)
+    {
+      values = {
+        ...values,
+        Title: "Title"
+      }
+    }
+
+    if(values.Description.length<1)
+    {
+      values = {
+        ...values,
+        Description: "Description"
+      }
+    }
+
     UserService.postSubjectToUserId(
       userId,
       values.Title,

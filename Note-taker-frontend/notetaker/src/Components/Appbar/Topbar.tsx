@@ -14,7 +14,11 @@ const Topbar = (props: any) => {
   const history = useHistory();
 
   useEffect(() => {
-    setUser(AuthService.getCurrentUser());
+    if (AuthService.getCurrentUser()) {
+      setUser(AuthService.getCurrentUser());
+    } else {
+      history.push("/login");
+    }
   }, []);
 
   const onLogout = () => {
@@ -36,7 +40,15 @@ const Topbar = (props: any) => {
           alignItems="center"
         >
           <Grid item>
-            <div style={{display:"flex",flexDirection:"row", justifyContent:"center",alignItems:"center", padding:"15px"}}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+                padding: "15px",
+              }}
+            >
               <img
                 src={logo}
                 height="33px"

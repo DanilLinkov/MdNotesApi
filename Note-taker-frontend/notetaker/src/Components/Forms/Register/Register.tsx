@@ -128,7 +128,7 @@ const Register = () => {
         margin: "auto",
         marginTop: "10%",
         textAlign: "center",
-        height: "30em",
+        height: "31.5em",
       }}
       bgcolor="white"
       borderRadius="10px"

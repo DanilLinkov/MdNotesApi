@@ -26,15 +26,11 @@ const Home = ({ match }: any) => {
     <div>
       <Appbar />
       <Switch>
-        <Route path="/addsubject">
-          <AddSubject />
-        </Route>
+        <Route path="/addsubject" component={AddSubject}/>
         <Route path="/editsubject" component={EditSubject}/>
         <Route path="/notes" component={NotesContainer}/>
         <Route path="/editor" component={NoteEditor}/>
-        <Route path="/">
-          <SubjecsContainer />
-        </Route>
+        <Route path="/" component={SubjecsContainer}/>
       </Switch>
     </div>
   );

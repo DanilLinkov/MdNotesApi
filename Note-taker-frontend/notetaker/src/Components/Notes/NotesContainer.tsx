@@ -13,7 +13,7 @@ const NotesContainer = (props: any) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (AuthService.getCurrentUser()) {
+    if (AuthService.getCurrentUser() && (props.location.state!==undefined)) {
       UserService.getNotesForSubjectId(props.location.state.subjectId).then(
         (response) => {
           setNotes(response.data);
@@ -48,57 +48,62 @@ const NotesContainer = (props: any) => {
 
   const backToHome = () => {
     history.push("/");
+    return 1;
   };
 
   // REMEMBER TO CHANGE SUBJECTID FROM PROP TO OBJECT WAY
 
   return (
-    <Box
-      style={{
-        width: "50%",
-        margin: "auto",
-        padding: "2em",
-        marginTop: "5%",
-        textAlign: "center",
-      }}
-      bgcolor="white"
-      borderRadius="20px"
-    >
-      <Button
-        style={{ marginBottom: "5px", color: "#e76f51" }}
-        onClick={backToHome}
-      >
-        Back
-      </Button>
-      <Grid
-        container
-        direction="row"
-        justify="center"
-        alignItems="center"
-        spacing={2}
-      >
-        <Grid item xs={12}>
-          <AddNotesCard
-            subjectId={props.location.state.subjectId}
-            addNote={addNoteCardWithId}
-          />
-        </Grid>
-        {loading ? (
-          <CircularProgress style={{marginTop:"5%"}} />
-        ) : (
-          Object.keys(notes).map((id) => (
-            <Grid item xs={12} sm={4} key={id}>
-              <NoteCard
-                title={(notes as any)[id].title}
-                id={(notes as any)[id].id}
-                removeCard={removeCardWithId}
+    <div>
+      {props.location.state === undefined ? backToHome() : (
+        <Box
+          style={{
+            width: "50%",
+            margin: "auto",
+            padding: "2em",
+            marginTop: "5%",
+            textAlign: "center",
+          }}
+          bgcolor="white"
+          borderRadius="20px"
+        >
+          <Button
+            style={{ marginBottom: "5px", color: "#e76f51" }}
+            onClick={backToHome}
+          >
+            Back
+          </Button>
+          <Grid
+            container
+            direction="row"
+            justify="center"
+            alignItems="center"
+            spacing={2}
+          >
+            <Grid item xs={12}>
+              <AddNotesCard
                 subjectId={props.location.state.subjectId}
+                addNote={addNoteCardWithId}
               />
             </Grid>
-          ))
-        )}
-      </Grid>
-    </Box>
+            {loading ? (
+              <CircularProgress style={{ marginTop: "5%" }} />
+            ) : (
+              Object.keys(notes).map((id) => (
+                <Grid item xs={12} sm={4} key={id}>
+                  <NoteCard
+                    title={(notes as any)[id].title}
+                    id={(notes as any)[id].id}
+                    removeCard={removeCardWithId}
+                    subjectId={props.location.state.subjectId}
+                  />
+                </Grid>
+              ))
+            )}
+          </Grid>
+        </Box>
+      )}
+    </div>
   );
 };
 
