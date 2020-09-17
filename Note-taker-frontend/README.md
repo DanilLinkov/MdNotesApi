@@ -1,7 +1,5 @@
 #### Hosted link https://mdnotes.azurewebsites.net/
 
-#### Backend github link: https://github.com/DanilLinkov/Note-taker
-
 
 
 # Features
