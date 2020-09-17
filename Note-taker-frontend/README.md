@@ -1,5 +1,3 @@
-
-
 #### Hosted link https://mdnotes.azurewebsites.net/
 
 #### Backend github link: https://github.com/DanilLinkov/Note-taker
@@ -23,6 +21,7 @@
 
 
 #### Log in and sign up page:
+![login](/images/login.png)
 ![login](/images/login.png)
 
 ![signup](/images/signup.png)
