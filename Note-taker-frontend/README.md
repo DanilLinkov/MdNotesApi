@@ -1,8 +1,4 @@
-
-
 #### Hosted link https://mdnotes.azurewebsites.net/
-
-#### Backend github link: https://github.com/DanilLinkov/Note-taker
 
 
 
@@ -24,31 +20,30 @@
 
 #### Log in and sign up page:
 
-![login](C:\Users\danil\Desktop\MDNotesForHosting\Note-taker-frontend\images\login.png)
+![login](/Note-taker-frontend/images/login.png)
 
-![signup](C:\Users\danil\Desktop\MDNotesForHosting\Note-taker-frontend\images\signup.png)
-
+![signup](/Note-taker-frontend/images/signup.png)
 
 
 #### Home page
 
-![home](C:\Users\danil\Desktop\MDNotesForHosting\Note-taker-frontend\images\home.png)
+![home](/Note-taker-frontend/images/home.png)
 
 
 
 #### Notes page
 
-![notes](C:\Users\danil\Desktop\MDNotesForHosting\Note-taker-frontend\images\notes.png)
+![notes](/Note-taker-frontend/images/notes.png)
 
 
 
 #### Mark Down editor page
 
-![markdown](C:\Users\danil\Desktop\MDNotesForHosting\Note-taker-frontend\images\markdown.png)
+![markdown](/Note-taker-frontend/images/markdown.png)
 
 
 
 #### Example of translation
 
-![translation](C:\Users\danil\Desktop\MDNotesForHosting\Note-taker-frontend\images\translation.png)
+![translation](/Note-taker-frontend/images/translation.png)
 
