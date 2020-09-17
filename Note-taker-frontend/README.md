@@ -21,31 +21,31 @@
 
 
 #### Log in and sign up page:
-![login](/images/login.png)
-![login](/images/login.png)
 
-![signup](/images/signup.png)
+![login](/Note-taker-frontend/images/login.png)
+
+![signup](/Note-taker-frontend/images/signup.png)
 
 
 #### Home page
 
-![home](/images/home.png)
+![home](/Note-taker-frontend/images/home.png)
 
 
 
 #### Notes page
 
-![notes](/images/notes.png)
+![notes](/Note-taker-frontend/images/notes.png)
 
 
 
 #### Mark Down editor page
 
-![markdown](/images/markdown.png)
+![markdown](/Note-taker-frontend/images/markdown.png)
 
 
 
 #### Example of translation
 
-![translation](/images/translation.png)
+![translation](/Note-taker-frontend/images/translation.png)
 
