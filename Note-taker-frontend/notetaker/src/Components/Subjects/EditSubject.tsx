@@ -6,6 +6,7 @@ import UserService from "../../Services/User.service";
 import AuthService from "../../Services/Auth.service";
 import { useHistory } from "react-router-dom";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { useTranslation } from 'react-i18next';
 
 interface Values {
   Title: string;
@@ -13,9 +14,10 @@ interface Values {
 }
 
 const EditSubject = (props: any) => {
-  const [userId, setuserId] = useState(-1);
+  const [userId, setuserId] = useState<number>(-1);
   const history = useHistory();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     if (AuthService.getCurrentUser()) {
@@ -31,14 +33,14 @@ const EditSubject = (props: any) => {
     if (values.Title.length < 1) {
       values = {
         ...values,
-        Title: "Title",
+        Title: t("title"),
       };
     }
 
     if (values.Description.length < 1) {
       values = {
         ...values,
-        Description: "Description",
+        Description: t("description"),
       };
     }
 
@@ -94,18 +96,18 @@ const EditSubject = (props: any) => {
               >
                 {({ values }) => (
                   <Form style={{ padding: "3em" }}>
-                    <Typography variant="h4">Edit Subject</Typography>
+                    <Typography variant="h4">{t("editsubject")}</Typography>
                     <div style={{ marginTop: "1em" }}>
                       <Field
                         name="Title"
-                        placeholder="Title"
+                        placeholder={t("title")}
                         component={MyField}
                       />
                     </div>
                     <div>
                       <Field
                         name="Description"
-                        placeholder="Description"
+                        placeholder={t("description")}
                         component={MyField}
                         rows="5"
                       />
@@ -114,13 +116,13 @@ const EditSubject = (props: any) => {
                       style={{ marginTop: "1em", marginRight: "2em" }}
                       type="submit"
                     >
-                      Update
+                      {t("submit")}
                     </Button>
                     <Button
                       style={{ marginTop: "1em" }}
                       onClick={onClickCancel}
                     >
-                      Cancel
+                      {t("cancel")}
                     </Button>
                   </Form>
                 )}

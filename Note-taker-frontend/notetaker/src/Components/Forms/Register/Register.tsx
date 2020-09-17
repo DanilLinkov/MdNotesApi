@@ -28,7 +28,7 @@ const Register = () => {
   const onSubmit = (values: Values) => {
     setLoading(true);
     if (values.Password && values.Username && values.ReEnteredPassword) {
-      var temp = true;
+      var temp:boolean = true;
 
       if (
         !checkCorrectLength(values.Username) &&
@@ -172,7 +172,7 @@ const Register = () => {
             <div>
               <Field
                 name="ReEnteredPassword"
-                placeholder="ReEnteredPassword"
+                placeholder="Reenter password"
                 component={Password}
                 error={userOverAllError.length > 0}
                 helperText={userOverAllError}

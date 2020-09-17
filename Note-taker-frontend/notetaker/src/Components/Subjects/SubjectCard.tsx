@@ -10,6 +10,7 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import UserService from "../../Services/User.service";
 import { useHistory } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles({
   root: {
@@ -22,10 +23,18 @@ const useStyles = makeStyles({
   },
 });
 
-const SubjectCard = (props: any) => {
+interface IProps {
+  id: number,
+  title: string,
+  description: string,
+  removeCard: (subjectId:number) => void
+}
+
+const SubjectCard = (props: IProps) => {
   const history = useHistory();
   const classes = useStyles();
   const { title, description, id } = props;
+  const { t, i18n } = useTranslation();
 
   const onDelete = () => {
     props.removeCard(id);
@@ -77,7 +86,9 @@ const SubjectCard = (props: any) => {
               style={{ color: "#ff4b5c" }}
               onClick={onClickGoToNotes}
             >
-              Go To Notes
+              {
+                t("gotonotes")
+              }
             </Button>
           </Grid>
           <Grid item>
@@ -87,7 +98,9 @@ const SubjectCard = (props: any) => {
               style={{ color: "#ff4b5c", marginRight: "20px" }}
               onClick={onEditClick}
             >
-              edit
+              {
+                t("edit")
+              }
             </Button>
             <Button
               size="large"
@@ -95,7 +108,9 @@ const SubjectCard = (props: any) => {
               style={{ color: "#ff4b5c" }}
               onClick={onDelete}
             >
-              Remove
+              {
+                t("remove")
+              }
             </Button>
           </Grid>
         </Grid>

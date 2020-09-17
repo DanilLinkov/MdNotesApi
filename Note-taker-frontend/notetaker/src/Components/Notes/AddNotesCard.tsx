@@ -8,6 +8,7 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import UserService from "../../Services/User.service";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles({
   root: {
@@ -19,26 +20,35 @@ const useStyles = makeStyles({
   },
 });
 
-const AddNotesCard = (props: any) => {
-  const classes = useStyles();
-  const [title, settitle] = useState("Title");
-  const [loading, setLoading] = useState(false);
+interface IProps {
+  subjectId: number,
+  addNote: (cardId:number,title:string) => void
+}
 
-  const onChange = (e: any) => {
+const AddNotesCard = (props: IProps) => {
+  const classes = useStyles();
+  const [title, settitle] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const { t, i18n } = useTranslation();
+
+  const onChange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     settitle(e.target.value);
   };
 
   const onSubmit = () => {
     setLoading(true);
     if (title.length < 1) {
-      UserService.createNoteForSubjectId("Title", props.subjectId).then(
+      const tempTitle:string = t("title");
+      const tempContent:string = t("content");
+      UserService.createNoteForSubjectId(tempTitle, props.subjectId,tempContent).then(
         (response) => {
-          props.addNote(response.data.id, "Title");
+          props.addNote(response.data.id, tempTitle);
           setLoading(false);
         }
       );
     } else {
-      UserService.createNoteForSubjectId(title, props.subjectId).then(
+      const tempContent:string = t("content");
+      UserService.createNoteForSubjectId(title, props.subjectId,tempContent).then(
         (response) => {
           props.addNote(response.data.id, title);
           setLoading(false);
@@ -55,7 +65,7 @@ const AddNotesCard = (props: any) => {
           style={{ width: "100%" }}
           variant="outlined"
           autoComplete="off"
-          placeholder="Title"
+          placeholder={t("title")}
           onChange={(e) => onChange(e)}
         />
       </CardContent>
@@ -63,7 +73,7 @@ const AddNotesCard = (props: any) => {
         <CircularProgress />
       ) : (
         <Button style={{ color: "#ff4b5c" }} onClick={onSubmit}>
-          Add New Note
+          {t("addnewnote")}
         </Button>
       )}
     </Card>

@@ -11,13 +11,15 @@ import { useHistory } from "react-router-dom";
 import UserService from "../../Services/User.service";
 import MDReactComponent from "markdown-react-js";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { useTranslation } from "react-i18next";
 
 const NoteEditor = (props: any) => {
   const history = useHistory();
-  const [title, setTitle] = useState("");
-  const [markdown, setMarkdown] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [saving, setSaving] = useState(false);
+  const [title, setTitle] = useState<string>("");
+  const [markdown, setMarkdown] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [saving, setSaving] = useState<boolean>(false);
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     setLoading(true);
@@ -35,7 +37,7 @@ const NoteEditor = (props: any) => {
     }
   }, [history,props.location.state]);
 
-  const onChange = (e: any) => {
+  const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMarkdown(e.target.value);
   };
 
@@ -67,7 +69,7 @@ const NoteEditor = (props: any) => {
     });
   };
 
-  const onTitleChange = (e: any) => {
+  const onTitleChange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     setTitle(e.target.value);
   };
 
@@ -115,12 +117,12 @@ const NoteEditor = (props: any) => {
               <Grid container item direction="row" justify="center">
                 <Grid item>
                   <Button onClick={onSaveClicked} style={{ color: "#ff4b5c" }}>
-                    Save
+                    {t("save")}
                   </Button>
                 </Grid>
                 <Grid>
                   <Button onClick={onClickedBack} style={{ color: "#ff4b5c" }}>
-                    Back
+                    {t("back")}
                   </Button>
                 </Grid>
               </Grid>
@@ -129,7 +131,7 @@ const NoteEditor = (props: any) => {
               <CircularProgress />
             ) : (
               <Grid item container spacing={4}>
-                <Grid item sm={6} xs={12}>
+                <Grid item sm={12} xs={12} md={6}>
                   <TextareaAutosize
                     style={{ width: "100%" }}
                     rowsMin={45}
@@ -138,7 +140,7 @@ const NoteEditor = (props: any) => {
                     onKeyDown={(e) => onTabPress(e)}
                   />
                 </Grid>
-                <Grid item sm={6} xs={12}>
+                <Grid item sm={12} xs={12} md={6}>
                   <Box
                     bgcolor="#DCDCDC"
                     width="97.6%"

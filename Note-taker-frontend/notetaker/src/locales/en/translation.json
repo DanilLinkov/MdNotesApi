@@ -1,0 +1,21 @@
+{
+    "title": "Title",
+    "description": "Description",
+    "save": "Save",
+    "remove": "Remove",
+    "gotomarkdown": "Go To Markdown",
+    "addnewnote": "Add new note",
+    "back": "Back",
+    "create": "Create",
+    "createanewsubject": "Create a new subject",
+    "editsubject": "Edit subject",
+    "cancel": "Cancel",
+    "update": "Update",
+    "home": "Home",
+    "logout": "Log out",
+    "edit": "Edit",
+    "gotonotes": "Go to notes",
+    "addnewsubject": "Add new subject",
+    "submit": "submit",
+    "content": "# This is a markdown file\n### To learn more about markdown syntax go to https://www.markdownguide.org/basic-syntax/"
+}

@@ -6,11 +6,13 @@ import UserService from "../../Services/User.service";
 import NoteCard from "./NoteCard";
 import AddNotesCard from "./AddNotesCard";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { useTranslation } from "react-i18next";
 
 const NotesContainer = (props: any) => {
   const history = useHistory();
   const [notes, setNotes] = useState<any>([]);
   const [loading, setLoading] = useState(true);
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     if (AuthService.getCurrentUser() && (props.location.state!==undefined)) {
@@ -25,7 +27,7 @@ const NotesContainer = (props: any) => {
     }
   }, [history, props.location.state]);
 
-  const addNoteCardWithId = (cardId: any, title: any) => {
+  const addNoteCardWithId = (cardId: number, title: string) => {
     const newNoteCard = {
       id: cardId,
       title: title,
@@ -34,7 +36,7 @@ const NotesContainer = (props: any) => {
     setNotes((oldNotes: any) => [...oldNotes, newNoteCard]);
   };
 
-  const removeCardWithId = (cardId: any) => {
+  const removeCardWithId = (cardId: number) => {
     const newArray = notes.filter((note: any) => {
       if (note.id === cardId) {
         return false;
@@ -69,7 +71,7 @@ const NotesContainer = (props: any) => {
             style={{ marginBottom: "5px", color: "#ff4b5c" }}
             onClick={backToHome}
           >
-            Back
+            {t("back")}
           </Button>
           <Grid
             container

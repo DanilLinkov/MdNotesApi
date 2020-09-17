@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { AppBar, Toolbar, Typography, Grid, Button } from "@material-ui/core";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Grid,
+  Button,
+  Select,
+  MenuItem,
+} from "@material-ui/core";
 import { useHistory } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import AuthService from "../../Services/Auth.service";
 import logo from "../../Resources/Logo.svg";
 import {
@@ -19,14 +28,22 @@ import {
   WhatsappIcon,
 } from "react-share";
 
-const Topbar = (props: any) => {
-  const [user, setUser] = useState({
+interface user {
+  id: number | null;
+  password: string;
+  token: string;
+  username: string;
+}
+
+const Topbar = () => {
+  const [user, setUser] = useState<user>({
     id: null,
     password: "",
     token: "",
     username: "",
   });
   const history = useHistory();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     if (AuthService.getCurrentUser()) {
@@ -45,8 +62,12 @@ const Topbar = (props: any) => {
     history.push("/");
   };
 
+  const onLanguageChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+    i18n.changeLanguage(event.target.value as string);
+  };
+
   return (
-    <div style={{ marginBottom: "150px"}}>
+    <div style={{ marginBottom: "165px" }}>
       <AppBar position="fixed" color="inherit">
         <Toolbar>
           <Grid
@@ -132,18 +153,31 @@ const Topbar = (props: any) => {
                 justify="space-between"
                 alignItems="center"
               >
-                <Grid item>
+                <Grid item xs={2}>
                   <Typography variant="button">{user.username}</Typography>
                 </Grid>
-                <Grid item>
+                <Grid item xs={2}>
                   <Button color="inherit" onClick={onHomeClick}>
-                    Home
+                    {t("home")}
                   </Button>
                 </Grid>
-                <Grid item>
+                <Grid item xs={4}>
                   <Button color="inherit" onClick={onLogout}>
-                    log out
+                    {t("logout")}
                   </Button>
+                </Grid>
+                <Grid item xs={3}>
+                  <Select
+                    labelId="changeLan"
+                    id="changeLan"
+                    value={i18n.language}
+                    onChange={onLanguageChange}
+                    variant="outlined"
+                  >
+                    <MenuItem value={"en"}>en</MenuItem>
+                    <MenuItem value={"ko"}>ko</MenuItem>
+                    <MenuItem value={"chi"}>chi</MenuItem>
+                  </Select>
                 </Grid>
               </Grid>
             </div>

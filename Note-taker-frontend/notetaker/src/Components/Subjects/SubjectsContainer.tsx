@@ -5,11 +5,13 @@ import AuthService from "../../Services/Auth.service";
 import { useHistory } from "react-router-dom";
 import UserService from "../../Services/User.service";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { useTranslation } from 'react-i18next';
 
 const SubjecsContainer = () => {
   const history = useHistory();
   const [subjects, setSubjects] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     if (AuthService.getCurrentUser()) {
@@ -32,7 +34,7 @@ const SubjecsContainer = () => {
     history.push("/addsubject");
   };
 
-  const removeCardWithId = (subjectId: any) => {
+  const removeCardWithId = (subjectId: number) => {
     const newArray = subjects.filter((subject: any) => {
       if (subject.id === subjectId) {
         return false;
@@ -55,7 +57,9 @@ const SubjecsContainer = () => {
         <Grid container direction="column" justify="flex-start" spacing={2} style={{textAlign:"initial"}}>
           <Grid item>
             <Button style={{ color: "#ff4b5c" }} onClick={clickedAddNewSubject}>
-              Add New Subject
+              {
+                t("addnewsubject")
+              }
             </Button>
           </Grid>
 
