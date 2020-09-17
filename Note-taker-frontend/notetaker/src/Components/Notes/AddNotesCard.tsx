@@ -12,7 +12,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 const useStyles = makeStyles({
   root: {
     width: "100%",
-    backgroundColor: "#FFDEE9",
+    backgroundColor: "#fbdcc4",
   },
   media: {
     height: 140,
@@ -62,7 +62,7 @@ const AddNotesCard = (props: any) => {
       {loading ? (
         <CircularProgress />
       ) : (
-        <Button style={{ color: "#e76f51" }} onClick={onSubmit}>
+        <Button style={{ color: "#ff4b5c" }} onClick={onSubmit}>
           Add New Note
         </Button>
       )}

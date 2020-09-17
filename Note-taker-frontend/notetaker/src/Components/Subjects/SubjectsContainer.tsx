@@ -54,7 +54,7 @@ const SubjecsContainer = () => {
       ) : (
         <Grid container direction="column" justify="flex-start" spacing={2} style={{textAlign:"initial"}}>
           <Grid item>
-            <Button style={{ color: "#e76f51" }} onClick={clickedAddNewSubject}>
+            <Button style={{ color: "#ff4b5c" }} onClick={clickedAddNewSubject}>
               Add New Subject
             </Button>
           </Grid>

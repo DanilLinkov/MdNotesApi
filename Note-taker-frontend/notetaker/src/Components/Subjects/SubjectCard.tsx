@@ -14,8 +14,8 @@ import { useHistory } from "react-router-dom";
 const useStyles = makeStyles({
   root: {
     width: "100%",
-    backgroundColor: "#2AF598",
-    color: "white",
+    backgroundColor: "#faf3dd",
+    color: "black",
   },
   media: {
     height: 140,
@@ -74,7 +74,7 @@ const SubjectCard = (props: any) => {
             <Button
               size="large"
               color="primary"
-              style={{ color: "#e76f51" }}
+              style={{ color: "#ff4b5c" }}
               onClick={onClickGoToNotes}
             >
               Go To Notes
@@ -84,7 +84,7 @@ const SubjectCard = (props: any) => {
             <Button
               size="large"
               color="primary"
-              style={{ color: "#e76f51", marginRight: "20px" }}
+              style={{ color: "#ff4b5c", marginRight: "20px" }}
               onClick={onEditClick}
             >
               edit
@@ -92,7 +92,7 @@ const SubjectCard = (props: any) => {
             <Button
               size="large"
               color="primary"
-              style={{ color: "#e76f51" }}
+              style={{ color: "#ff4b5c" }}
               onClick={onDelete}
             >
               Remove

@@ -22,7 +22,7 @@ class UserService {
     const newNote = {
       title: title,
       // Can preset content later which could teach people how to use the notes
-      content: "# This is a markdown file\n ### To learn more about markdown syntax go to https://www.markdownguide.org/basic-syntax/",
+      content: "# This is a markdown file\n### To learn more about markdown syntax go to https://www.markdownguide.org/basic-syntax/",
       subjectId: subjectId,
     };
 

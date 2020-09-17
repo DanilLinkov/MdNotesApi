@@ -66,7 +66,7 @@ const NotesContainer = (props: any) => {
           borderRadius="20px"
         >
           <Button
-            style={{ marginBottom: "5px", color: "#e76f51" }}
+            style={{ marginBottom: "5px", color: "#ff4b5c" }}
             onClick={backToHome}
           >
             Back

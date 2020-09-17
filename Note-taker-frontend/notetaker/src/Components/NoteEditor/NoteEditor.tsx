@@ -81,7 +81,7 @@ const NoteEditor = (props: any) => {
       {props === undefined ? goHome() : (
         <Box
           style={{
-            width: "90%",
+            maxWidth: "90%",
             margin: "auto",
             padding: "2em",
             marginTop: "5%",
@@ -114,12 +114,12 @@ const NoteEditor = (props: any) => {
             ) : (
               <Grid container item direction="row" justify="center">
                 <Grid item>
-                  <Button onClick={onSaveClicked} style={{ color: "#e76f51" }}>
+                  <Button onClick={onSaveClicked} style={{ color: "#ff4b5c" }}>
                     Save
                   </Button>
                 </Grid>
                 <Grid>
-                  <Button onClick={onClickedBack} style={{ color: "#e76f51" }}>
+                  <Button onClick={onClickedBack} style={{ color: "#ff4b5c" }}>
                     Back
                   </Button>
                 </Grid>

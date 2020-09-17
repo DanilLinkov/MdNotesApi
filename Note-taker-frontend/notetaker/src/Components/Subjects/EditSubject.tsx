@@ -62,7 +62,7 @@ const EditSubject = (props: any) => {
       {(props.location.state===undefined) ? onClickCancel() : (
         <div
           style={{
-            width: "37em",
+            maxWidth: "37em",
             margin: "auto",
             marginTop: "10%",
             textAlign: "center",
@@ -74,7 +74,7 @@ const EditSubject = (props: any) => {
           ) : (
             <Box
               style={{
-                width: "37em",
+                maxWidth: "37em",
                 margin: "auto",
                 marginTop: "10%",
                 textAlign: "center",

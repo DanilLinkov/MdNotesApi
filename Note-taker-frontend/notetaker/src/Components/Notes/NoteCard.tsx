@@ -14,8 +14,8 @@ import { useHistory } from "react-router-dom";
 const useStyles = makeStyles({
   root: {
     width: "100%",
-    backgroundColor: "#2AF598",
-    color: "white"
+    backgroundColor: "#faf3dd",
+    color: "Black"
   },
   media: {
     height: 140,
@@ -59,7 +59,7 @@ const NoteCard = (props: any) => {
           spacing={8}
         >
           <Grid item>
-            <Button size="small" color="primary" style={{ color: "#e76f51" }} onClick={goToMarkdownClicked}>
+            <Button size="small" color="primary" style={{ color: "#ff4b5c" }} onClick={goToMarkdownClicked}>
               Go To MarkDown
             </Button>
           </Grid>
@@ -67,7 +67,7 @@ const NoteCard = (props: any) => {
             <Button
               size="small"
               color="primary"
-              style={{ color: "#e76f51" }}
+              style={{ color: "#ff4b5c" }}
               onClick={removeCard}
             >
               Remove

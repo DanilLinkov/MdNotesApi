@@ -58,11 +58,12 @@ const Login = (props: any) => {
   return (
     <Box
       style={{
-        width: "35em",
+        minWidth:"20em",
+        maxWidth: "35em",
         margin: "auto",
         marginTop: "10%",
         textAlign: "center",
-        height: "30em",
+        minHeight: "31.5em",
       }}
       bgcolor="white"
       borderRadius="10px"
@@ -88,7 +89,7 @@ const Login = (props: any) => {
                 src={logo}
                 height="80px"
                 alt="Logo"
-                style={{ marginRight: "10px" }}
+                style={{ marginRight: "12px" }}
               />
               <Typography variant="h4">MD-Notes</Typography>
             </div>

@@ -116,11 +116,12 @@ const Register = () => {
   return (
     <Box
       style={{
-        width: "35em",
+        minWidth: "20em",
+        maxWidth: "35em",
         margin: "auto",
         marginTop: "10%",
         textAlign: "center",
-        height: "31.5em",
+        minHeight: "31.5em",
       }}
       bgcolor="white"
       borderRadius="10px"
@@ -146,7 +147,7 @@ const Register = () => {
                 src={logo}
                 height="80px"
                 alt="Logo"
-                style={{ marginRight: "10px" }}
+                style={{ marginRight: "12px" }}
               />
               <Typography variant="h4">MD-Notes</Typography>
             </div>
@@ -178,7 +179,7 @@ const Register = () => {
               />
             </div>
             {loading ? (
-              <CircularProgress style={{marginTop:"15px"}}/>
+              <CircularProgress style={{ marginTop: "15px" }} />
             ) : (
               <div>
                 <Button type="submit">Sign up</Button>

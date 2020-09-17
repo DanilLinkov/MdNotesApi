@@ -64,7 +64,7 @@ const AddSubject = (props: any) => {
   return (
     <div
       style={{
-        width: "37em",
+        maxWidth: "37em",
         margin: "auto",
         marginTop: "10%",
         textAlign: "center",
@@ -76,7 +76,7 @@ const AddSubject = (props: any) => {
       ) : (
         <Box
           style={{
-            width: "37em",
+            maxWidth: "37em",
             margin: "auto",
             marginTop: "10%",
             textAlign: "center",
