@@ -2,8 +2,10 @@
 
 #### Hosted links
 
-- Frontend : https://mdnotes.azurewebsites.net/
-- web api: https://mdnotesapi.azurewebsites.net/swagger/index.html
+- Frontend hosted link : https://mdnotes.azurewebsites.net/
+- Frontend github link: https://github.com/DanilLinkov/MdNotesClient
+
+- Backedend hosted on: https://mdnotesapi.azurewebsites.net/swagger/index.html
 
 #### Hosted using azure pipeline and azure portal
 
